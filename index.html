@@ -197,8 +197,8 @@
     }
 
     .btn-store.ios {
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
+      background: var(--near-black);
+      border: 1px solid rgba(255,255,255,0.18);
       color: var(--off-white);
     }
 
@@ -760,7 +760,7 @@
       <div class="hero-left">
         <div class="hero-tag"><span></span> India's Banjara Matrimonial App</div>
         <h1>Find Your <em>Perfect</em> Match</h1>
-        <p class="hero-sub">A beautiful, trusted matrimonial app built exclusively for the Banjara community across India. Verified profiles, private messaging and secure payments.</p>
+        <p class="hero-sub">A beautiful, trusted matrimonial app built exclusively for the Banjara community across India. Available on Android &amp; iOS. Verified profiles, private messaging and secure payments.</p>
         <div class="hero-actions">
           <!-- Google Play -->
           <a class="btn-store android" href="#download">
@@ -770,7 +770,7 @@
           <!-- App Store -->
           <a class="btn-store ios" href="#">
             <svg viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.15-2.18 1.27-2.16 3.8.03 3.02 2.65 4.03 2.68 4.04l-.07.28zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-            <div class="btn-store-text"><small>Coming soon on</small><strong>App Store</strong></div>
+            <div class="btn-store-text"><small>Download on the</small><strong>App Store</strong></div>
           </a>
         </div>
         <div class="hero-stats">
@@ -899,7 +899,7 @@
             </div>
             <!-- iOS badge -->
             <div style="position:absolute;bottom:36px;left:50%;transform:translateX(-50%);background:var(--maroon);color:white;font-size:8px;padding:4px 10px;border-radius:10px;font-family:'Poppins',sans-serif;white-space:nowrap;">
-              🍎 iOS — Coming Soon
+              🍎 Available on iOS
             </div>
           </div>
           <!-- iOS home indicator -->
@@ -915,8 +915,8 @@
   <section class="qr-section" id="download">
     <div class="qr-text">
       <div class="section-eyebrow">Instant Download</div>
-      <h2>Scan to get the app</h2>
-      <p>Point your phone camera at the QR code to download BanjaraHub instantly. No searching, no typing — just scan and install.</p>
+      <h2>Available on both platforms</h2>
+      <p>Scan the QR code to download BanjaraHub instantly on Android or iOS. No searching, no typing — just scan and install.</p>
       <div class="qr-stores">
         <a class="btn-store android" href="#" style="background:rgba(242,208,213,0.08);border:1px solid rgba(242,208,213,0.15);color:var(--off-white);">
           <svg viewBox="0 0 24 24" width="20" height="20"><path d="M3.18 23.76a2 2 0 0 1-.93-1.76V2a2 2 0 0 1 .93-1.76l.1-.06 11.65 11.65v.28L3.28 23.82z" fill="#FFF8F2"/><path d="M18.53 16.3l-3.88-3.88.01-.28 3.87-3.87.09.05 4.59 2.61a2 2 0 0 1 0 3.5l-4.59 2.61z" fill="#F2D0D5"/><path d="M18.62 16.25L14.93 12.56 3.18 23.76c.47.4 1.1.43 1.74.08z" fill="#aaa"/><path d="M18.62 7.75L4.92.16C4.28-.19 3.65-.16 3.18.24l11.75 11.74z" fill="#aaa"/></svg>
@@ -924,13 +924,19 @@
         </a>
         <a class="btn-store ios" href="#">
           <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.15-2.18 1.27-2.16 3.8.03 3.02 2.65 4.03 2.68 4.04l-.07.28zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-          <div class="btn-store-text"><small>Coming soon</small><strong>App Store</strong></div>
+          <div class="btn-store-text"><small>Download on the</small><strong>App Store</strong></div>
         </a>
       </div>
     </div>
-    <div class="qr-box">
-      <canvas id="qr-canvas"></canvas>
-      <div class="qr-box-label">Scan for Android</div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;">
+      <div class="qr-box">
+        <canvas id="qr-canvas"></canvas>
+        <div class="qr-box-label">📱 Android</div>
+      </div>
+      <div class="qr-box">
+        <canvas id="qr-canvas-ios"></canvas>
+        <div class="qr-box-label">🍎 iOS</div>
+      </div>
     </div>
   </section>
 
@@ -976,7 +982,7 @@
   <div class="download-banner">
     <div class="dl-banner-text">
       <h2>Ready to find your match?</h2>
-      <p>Download BanjaraHub free on Android today.</p>
+      <p>Download BanjaraHub free on Android &amp; iOS today.</p>
     </div>
     <div class="dl-banner-btns">
       <a class="dl-btn primary" href="#">
@@ -985,7 +991,7 @@
       </a>
       <a class="dl-btn secondary" href="#">
         <svg viewBox="0 0 24 24" fill="white" width="22" height="22"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.15-2.18 1.27-2.16 3.8.03 3.02 2.65 4.03 2.68 4.04l-.07.28zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        <div class="dl-btn-text"><small>Coming soon</small><strong>App Store</strong></div>
+        <div class="dl-btn-text"><small>Download on the</small><strong>App Store</strong></div>
       </a>
     </div>
   </div>
@@ -1017,6 +1023,14 @@
     }
 
     new QRCode(document.getElementById('qr-canvas'), {
+      text: 'https://banjarahub.com',
+      width: 160,
+      height: 160,
+      colorDark: '#8B1A2E',
+      colorLight: '#ffffff',
+      correctLevel: QRCode.CorrectLevel.H
+    });
+    new QRCode(document.getElementById('qr-canvas-ios'), {
       text: 'https://banjarahub.com',
       width: 160,
       height: 160,
