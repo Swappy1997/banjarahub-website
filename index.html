@@ -5,509 +5,605 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BanjaraHub – Banjara Matrimonial App</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    @font-face {
+      font-family: 'Recoleta';
+      src: url('recoleta_bold.ttf') format('truetype');
+      font-weight: 700;
+    }
+    @font-face {
+      font-family: 'Poppins';
+      src: url('poppins_medium.ttf') format('truetype');
+      font-weight: 500;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --maroon:       #8B1A2E;
+      --maroon-mid:   #B02840;
+      --maroon-light: #C8404F;
+      --maroon-tint:  #F2D0D5;
+      --charcoal:     #1A1A1A;
+      --off-white:    #FFF8F2;
+      --cream:        #F5EDE8;
+      --mid-gray:     #888888;
+      --light-gray:   #E8E0DC;
+      --near-black:   #0A0205;
+    }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #FFF8F2;
-      color: #1A1A1A;
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      font-weight: 500;
+      background: var(--near-black);
+      color: var(--off-white);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .display {
+      font-family: 'Recoleta', Georgia, serif;
+      font-weight: 700;
     }
 
     /* ── NAV ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: rgba(139,26,46,0.97);
-      backdrop-filter: blur(8px);
+      z-index: 999;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 40px;
+      padding: 18px 48px;
+      background: rgba(10,2,5,0.7);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(242,208,213,0.08);
     }
 
     .nav-brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       text-decoration: none;
     }
 
     .nav-brand img {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
     }
 
-    .nav-brand span {
-      color: white;
+    .nav-brand-name {
+      font-family: 'Recoleta', Georgia, serif;
       font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
+      color: var(--off-white);
+      letter-spacing: 0.3px;
     }
 
-    nav a.download-btn {
-      background: white;
-      color: #8B1A2E;
-      padding: 8px 20px;
-      border-radius: 20px;
-      font-weight: 700;
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+
+    .nav-link {
+      color: var(--maroon-tint);
+      text-decoration: none;
+      font-size: 14px;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .nav-link:hover { opacity: 1; }
+
+    .nav-cta {
+      background: var(--maroon);
+      color: white;
+      padding: 9px 22px;
+      border-radius: 100px;
       font-size: 14px;
       text-decoration: none;
+      transition: background 0.2s;
     }
+    .nav-cta:hover { background: var(--maroon-mid); }
 
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
-      background: linear-gradient(135deg, #8B1A2E 0%, #B02840 60%, #C8404F 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 100px 40px 60px;
-      gap: 60px;
-      flex-wrap: wrap;
+      padding: 120px 48px 80px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .hero-text {
-      max-width: 480px;
-      color: white;
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(139,26,46,0.35) 0%, transparent 70%),
+                  radial-gradient(ellipse 50% 50% at 20% 80%, rgba(176,40,64,0.15) 0%, transparent 60%);
     }
 
-    .hero-badge {
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 1100px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tag {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.3);
-      color: #F2D0D5;
+      background: rgba(242,208,213,0.1);
+      border: 1px solid rgba(242,208,213,0.2);
+      color: var(--maroon-tint);
       padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 13px;
+      border-radius: 100px;
+      font-size: 12px;
+      margin-bottom: 24px;
+    }
+
+    .hero-tag span {
+      width: 6px; height: 6px;
+      background: var(--maroon-light);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .hero h1 {
+      font-size: 64px;
+      line-height: 1.05;
+      color: var(--off-white);
       margin-bottom: 20px;
     }
 
-    .hero-text h1 {
-      font-size: 52px;
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 20px;
+    .hero h1 em {
+      font-style: normal;
+      color: var(--maroon-tint);
     }
 
-    .hero-text h1 span {
-      color: #F2D0D5;
+    .hero-sub {
+      font-size: 16px;
+      color: var(--mid-gray);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 420px;
     }
 
-    .hero-text p {
-      font-size: 17px;
-      color: #F2D0D5;
-      line-height: 1.7;
-      margin-bottom: 36px;
-    }
-
-    .store-buttons {
+    .hero-actions {
       display: flex;
-      gap: 14px;
+      align-items: center;
+      gap: 16px;
       flex-wrap: wrap;
     }
 
-    .store-btn {
+    .btn-store {
       display: flex;
       align-items: center;
       gap: 10px;
-      background: white;
-      color: #1A1A1A;
-      padding: 12px 20px;
-      border-radius: 12px;
+      padding: 12px 22px;
+      border-radius: 14px;
       text-decoration: none;
-      transition: transform 0.2s;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .btn-store:hover { transform: translateY(-2px); }
+
+    .btn-store.android {
+      background: var(--off-white);
+      color: var(--charcoal);
     }
 
-    .store-btn:hover { transform: translateY(-2px); }
-
-    .store-btn.coming-soon {
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.3);
-      color: white;
-      cursor: default;
+    .btn-store.ios {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--off-white);
     }
 
-    .store-btn svg {
-      width: 24px;
-      height: 24px;
-      flex-shrink: 0;
-    }
+    .btn-store svg { width: 22px; height: 22px; flex-shrink: 0; }
 
-    .store-btn-text small {
+    .btn-store-text small {
       display: block;
       font-size: 10px;
-      color: #888;
+      opacity: 0.55;
       line-height: 1;
-    }
-
-    .store-btn.coming-soon .store-btn-text small {
-      color: #F2D0D5;
-    }
-
-    .store-btn-text strong {
-      font-size: 15px;
-      font-weight: 700;
-      display: block;
-    }
-
-    /* ── PHONE MOCKUP ── */
-    .phone-wrap {
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .phone {
-      width: 260px;
-      height: 520px;
-      background: #1A0A10;
-      border-radius: 40px;
-      border: 8px solid #3A1A22;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255,255,255,0.05);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .phone-notch {
-      width: 80px;
-      height: 22px;
-      background: #1A0A10;
-      border-radius: 0 0 14px 14px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-    }
-
-    .phone-screen {
-      background: linear-gradient(180deg, #8B1A2E 0%, #B02840 40%, #FFF8F2 40%);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 0 16px;
-    }
-
-    .phone-avatar {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: #F2D0D5;
-      border: 3px solid white;
-      margin: 24px auto 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-    }
-
-    .phone-name {
-      color: white;
-      font-weight: 700;
-      font-size: 15px;
       margin-bottom: 2px;
     }
 
-    .phone-sub {
-      color: #F2D0D5;
-      font-size: 11px;
-      margin-bottom: 20px;
+    .btn-store-text strong {
+      font-size: 14px;
+      font-family: 'Recoleta', Georgia, serif;
+      display: block;
+      line-height: 1;
     }
 
-    .phone-card {
-      background: white;
-      border-radius: 16px;
-      width: 100%;
-      padding: 14px;
-      box-shadow: 0 4px 20px rgba(139,26,46,0.1);
-      margin-bottom: 10px;
-    }
-
-    .phone-card-row {
+    .hero-stats {
       display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
+      gap: 32px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(242,208,213,0.1);
     }
 
-    .phone-card-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #F2D0D5, #C8404F);
-      flex-shrink: 0;
+    .stat-num {
+      font-family: 'Recoleta', Georgia, serif;
+      font-size: 28px;
+      color: var(--off-white);
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--mid-gray);
+      margin-top: 2px;
+    }
+
+    /* ── PHONE SHOWCASE ── */
+    .phones-wrap {
+      position: relative;
+      height: 580px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
     }
 
-    .phone-card-info { flex: 1; }
-
-    .phone-card-name {
-      font-size: 12px;
-      font-weight: 700;
-      color: #1A1A1A;
+    .phone {
+      position: absolute;
+      width: 220px;
+      background: #1C0A10;
+      border-radius: 36px;
+      border: 6px solid #2E1018;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.04);
+      overflow: hidden;
     }
 
-    .phone-card-detail {
-      font-size: 10px;
-      color: #888;
+    .phone-main {
+      width: 230px;
+      z-index: 3;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
-    .phone-match-btn {
-      background: #8B1A2E;
+    .phone-left {
+      width: 200px;
+      z-index: 2;
+      left: -10px;
+      top: 40px;
+      transform: rotate(-6deg);
+      opacity: 0.7;
+      filter: blur(1px);
+    }
+
+    .phone-right {
+      width: 200px;
+      z-index: 2;
+      right: -10px;
+      top: 40px;
+      transform: rotate(6deg);
+      opacity: 0.7;
+      filter: blur(1px);
+    }
+
+    .phone-notch {
+      width: 70px; height: 18px;
+      background: #1C0A10;
+      border-radius: 0 0 12px 12px;
+      margin: 0 auto;
+      position: relative; z-index: 2;
+    }
+
+    /* Screen: Profile */
+    .screen-profile {
+      background: linear-gradient(180deg, var(--maroon) 0%, var(--maroon-mid) 35%, var(--off-white) 35%);
+      padding: 0 0 60px;
+      min-height: 440px;
+      position: relative;
+    }
+
+    .sp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px 0;
+    }
+    .sp-header-title { font-size: 11px; color: rgba(255,255,255,0.7); font-family: 'Poppins', sans-serif; }
+
+    .sp-avatar {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: var(--maroon-tint);
+      border: 3px solid white;
+      margin: 12px auto 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px;
+    }
+    .sp-name { color: white; font-size: 13px; font-weight: 700; text-align: center; font-family: 'Recoleta', serif; }
+    .sp-meta { color: var(--maroon-tint); font-size: 9px; text-align: center; margin-bottom: 14px; font-family: 'Poppins', sans-serif; }
+
+    .sp-cards { padding: 0 10px; display: flex; flex-direction: column; gap: 8px; }
+
+    .sp-card {
+      background: white;
+      border-radius: 12px;
+      padding: 10px 12px;
+      box-shadow: 0 2px 12px rgba(139,26,46,0.08);
+    }
+    .sp-card-label { font-size: 8px; color: var(--mid-gray); margin-bottom: 6px; font-family: 'Poppins', sans-serif; text-transform: uppercase; letter-spacing: 0.5px; }
+    .sp-match-row {
+      display: flex; align-items: center; gap: 8px;
+    }
+    .sp-match-ava {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--maroon-tint), var(--maroon-light));
+      display: flex; align-items: center; justify-content: center; font-size: 13px;
+      flex-shrink: 0;
+    }
+    .sp-match-info { flex: 1; }
+    .sp-match-name { font-size: 10px; font-weight: 700; color: var(--charcoal); font-family: 'Recoleta', serif; }
+    .sp-match-detail { font-size: 8px; color: var(--mid-gray); font-family: 'Poppins', sans-serif; }
+    .sp-match-btn {
+      background: var(--maroon);
       color: white;
       border: none;
-      border-radius: 8px;
-      padding: 5px 10px;
-      font-size: 10px;
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 8px;
       font-weight: 700;
+      font-family: 'Poppins', sans-serif;
     }
 
-    .phone-bottom-nav {
+    .sp-bottom-nav {
       position: absolute;
-      bottom: 0;
-      left: 0; right: 0;
+      bottom: 0; left: 0; right: 0;
       background: white;
       display: flex;
       justify-content: space-around;
-      padding: 10px 0 16px;
-      border-top: 1px solid #F2D0D5;
+      padding: 10px 0 14px;
+      border-top: 1px solid var(--maroon-tint);
     }
-
-    .nav-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #E8E0DC;
+    .sp-nav-item {
+      display: flex; flex-direction: column; align-items: center; gap: 3px;
     }
+    .sp-nav-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--light-gray); }
+    .sp-nav-dot.active { background: var(--maroon); }
 
-    .nav-dot.active { background: #8B1A2E; }
-
-    /* ── FEATURES ── */
-    .features {
-      padding: 80px 40px;
-      text-align: center;
+    /* Screen: Explore */
+    .screen-explore {
+      background: var(--off-white);
+      min-height: 420px;
+      padding-bottom: 50px;
+      position: relative;
     }
-
-    .section-label {
-      color: #8B1A2E;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
+    .se-top {
+      background: var(--maroon);
+      padding: 10px 14px 16px;
     }
-
-    .section-title {
-      font-size: 36px;
-      font-weight: 800;
-      color: #1A1A1A;
-      margin-bottom: 48px;
+    .se-top-title { font-size: 12px; color: white; font-family: 'Recoleta', serif; margin-bottom: 8px; }
+    .se-search {
+      background: rgba(255,255,255,0.15);
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 9px;
+      color: rgba(255,255,255,0.5);
+      font-family: 'Poppins', sans-serif;
     }
-
-    .features-grid {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 24px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .feature-card {
+    .se-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px 10px; }
+    .se-card {
       background: white;
-      border-radius: 20px;
-      padding: 32px 24px;
-      width: 250px;
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(139,26,46,0.07);
-      border: 1px solid #F2D0D5;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(139,26,46,0.06);
+    }
+    .se-card-img {
+      height: 64px;
+      background: linear-gradient(135deg, var(--maroon-tint), var(--maroon-light));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+    }
+    .se-card-body { padding: 6px 8px; }
+    .se-card-name { font-size: 9px; font-weight: 700; color: var(--charcoal); font-family: 'Recoleta', serif; }
+    .se-card-detail { font-size: 8px; color: var(--mid-gray); font-family: 'Poppins', sans-serif; }
+    .se-bottom-nav {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: white; display: flex;
+      justify-content: space-around;
+      padding: 10px 0 14px;
+      border-top: 1px solid var(--maroon-tint);
     }
 
-    .feature-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
-      background: #FFF8F2;
-      border: 1px solid #F2D0D5;
+    /* ── QR SECTION ── */
+    .qr-section {
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 26px;
-      margin: 0 auto 16px;
+      gap: 48px;
+      padding: 80px 48px;
+      background: rgba(242,208,213,0.03);
+      border-top: 1px solid rgba(242,208,213,0.08);
+      border-bottom: 1px solid rgba(242,208,213,0.08);
+      flex-wrap: wrap;
     }
 
-    .feature-card h3 {
-      font-size: 16px;
-      font-weight: 700;
-      color: #8B1A2E;
+    .qr-text h2 { font-size: 40px; color: var(--off-white); margin-bottom: 12px; }
+    .qr-text p { font-size: 15px; color: var(--mid-gray); line-height: 1.7; max-width: 400px; margin-bottom: 28px; }
+
+    .qr-stores { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .qr-box {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 8px 40px rgba(139,26,46,0.15);
+    }
+
+    .qr-box canvas { border-radius: 8px; }
+    .qr-box-label { font-size: 12px; color: var(--charcoal); font-family: 'Poppins', sans-serif; font-weight: 500; }
+
+    /* ── FEATURES ── */
+    .features {
+      padding: 100px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-size: 12px;
+      color: var(--maroon-light);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+
+    .section-h2 {
+      font-size: 44px;
+      color: var(--off-white);
+      margin-bottom: 60px;
+      max-width: 500px;
+      line-height: 1.15;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .feat-card {
+      background: rgba(242,208,213,0.04);
+      border: 1px solid rgba(242,208,213,0.08);
+      border-radius: 20px;
+      padding: 28px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .feat-card:hover {
+      border-color: rgba(242,208,213,0.18);
+      background: rgba(242,208,213,0.07);
+    }
+
+    .feat-icon {
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      background: rgba(139,26,46,0.25);
+      border: 1px solid rgba(139,26,46,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+
+    .feat-card h3 {
+      font-size: 18px;
+      color: var(--off-white);
       margin-bottom: 8px;
     }
 
-    .feature-card p {
+    .feat-card p {
       font-size: 13px;
-      color: #888;
-      line-height: 1.6;
+      color: var(--mid-gray);
+      line-height: 1.7;
     }
 
-    /* ── DOWNLOAD SECTION ── */
-    .download-section {
-      background: linear-gradient(135deg, #8B1A2E, #C8404F);
-      padding: 80px 40px;
-      text-align: center;
-      color: white;
-    }
-
-    .download-section h2 {
-      font-size: 40px;
-      font-weight: 800;
-      margin-bottom: 16px;
-    }
-
-    .download-section p {
-      font-size: 17px;
-      color: #F2D0D5;
-      margin-bottom: 40px;
-    }
-
-    .download-buttons {
+    /* ── DOWNLOAD BANNER ── */
+    .download-banner {
+      margin: 0 48px 80px;
+      background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-light) 100%);
+      border-radius: 28px;
+      padding: 64px 60px;
       display: flex;
-      justify-content: center;
-      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .download-banner::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 300px; height: 300px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+    }
+
+    .download-banner::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: 30%;
+      width: 200px; height: 200px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+    }
+
+    .dl-banner-text { position: relative; z-index: 1; }
+    .dl-banner-text h2 { font-size: 40px; color: white; margin-bottom: 10px; }
+    .dl-banner-text p { font-size: 15px; color: var(--maroon-tint); }
+
+    .dl-banner-btns {
+      display: flex;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
       flex-wrap: wrap;
     }
 
     .dl-btn {
       display: flex;
       align-items: center;
-      gap: 12px;
-      background: white;
-      color: #1A1A1A;
-      padding: 14px 28px;
+      gap: 10px;
+      padding: 13px 22px;
       border-radius: 14px;
       text-decoration: none;
-      min-width: 180px;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+      min-width: 160px;
     }
-
-    .dl-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-    }
-
-    .dl-btn.soon {
+    .dl-btn:hover { transform: translateY(-2px); }
+    .dl-btn.primary { background: white; color: var(--charcoal); }
+    .dl-btn.secondary {
       background: rgba(255,255,255,0.12);
-      border: 1.5px solid rgba(255,255,255,0.3);
+      border: 1px solid rgba(255,255,255,0.2);
       color: white;
-      cursor: default;
     }
-
-    .dl-btn.soon:hover { transform: none; box-shadow: none; }
-
-    .dl-btn svg { width: 28px; height: 28px; flex-shrink: 0; }
-
-    .dl-btn-text small {
-      display: block;
-      font-size: 11px;
-      opacity: 0.6;
-    }
-
-    .dl-btn.soon .dl-btn-text small { opacity: 0.7; }
-
-    .dl-btn-text strong {
-      font-size: 16px;
-      font-weight: 700;
-    }
-
-    /* ── ABOUT ── */
-    .about {
-      padding: 80px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 60px;
-      flex-wrap: wrap;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .about-logo {
-      width: 140px;
-      height: 140px;
-      border-radius: 32px;
-      box-shadow: 0 8px 40px rgba(139,26,46,0.2);
-      flex-shrink: 0;
-    }
-
-    .about-text h2 {
-      font-size: 32px;
-      font-weight: 800;
-      color: #1A1A1A;
-      margin-bottom: 16px;
-    }
-
-    .about-text p {
-      font-size: 15px;
-      color: #888;
-      line-height: 1.8;
-      max-width: 480px;
-    }
+    .dl-btn svg { width: 22px; height: 22px; flex-shrink: 0; }
+    .dl-btn-text small { display: block; font-size: 10px; opacity: 0.6; }
+    .dl-btn-text strong { font-size: 14px; font-family: 'Recoleta', serif; display: block; }
 
     /* ── FOOTER ── */
     footer {
-      background: #1A1A1A;
-      color: #888;
-      padding: 32px 40px;
+      border-top: 1px solid rgba(242,208,213,0.08);
+      padding: 40px 48px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .footer-brand img {
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
-    }
-
-    .footer-brand span {
-      color: white;
-      font-weight: 700;
-      font-size: 15px;
-    }
-
-    footer a {
-      color: #F2D0D5;
-      text-decoration: none;
-      font-size: 13px;
-    }
-
-    footer p { font-size: 13px; }
-
-    .footer-links {
-      display: flex;
+      flex-wrap: gap;
       gap: 20px;
     }
 
-    @media (max-width: 640px) {
-      .hero-text h1 { font-size: 36px; }
+    .footer-brand { display: flex; align-items: center; gap: 10px; }
+    .footer-brand img { width: 30px; height: 30px; border-radius: 8px; }
+    .footer-brand-name { font-family: 'Recoleta', serif; font-size: 17px; color: var(--off-white); }
+    .footer-copy { font-size: 12px; color: var(--mid-gray); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 13px; color: var(--mid-gray); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--maroon-tint); }
+
+    @media (max-width: 768px) {
       nav { padding: 14px 20px; }
       .hero { padding: 100px 20px 60px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero h1 { font-size: 42px; }
+      .phones-wrap { height: 380px; }
+      .phone-left, .phone-right { display: none; }
+      .phone-main { width: 200px; }
+      .qr-section { padding: 60px 20px; }
       .features { padding: 60px 20px; }
-      footer { flex-direction: column; text-align: center; }
-      .footer-links { justify-content: center; }
+      .section-h2 { font-size: 32px; }
+      .download-banner { margin: 0 20px 60px; padding: 40px 28px; }
+      .dl-banner-text h2 { font-size: 28px; }
+      footer { padding: 32px 20px; flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -516,156 +612,247 @@
   <!-- NAV -->
   <nav>
     <a class="nav-brand" href="#">
-      <img src="logo.png" alt="BanjaraHub logo" />
-      <span>BanjaraHub</span>
+      <img src="logo.png" alt="BanjaraHub" />
+      <span class="nav-brand-name">BanjaraHub</span>
     </a>
-    <a class="download-btn" href="#download">Download App</a>
+    <div class="nav-right">
+      <a class="nav-link" href="#features">Features</a>
+      <a class="nav-link" href="#download">Download</a>
+      <a class="nav-cta" href="#download">Get the App</a>
+    </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-text">
-      <div class="hero-badge">🇮🇳 Made for the Banjara Community</div>
-      <h1>Find Your <span>Perfect Match</span></h1>
-      <p>India's first dedicated matrimonial app for the Banjara community. Verified profiles, secure payments and real connections.</p>
-      <div class="store-buttons">
-        <!-- Play Store -->
-        <a class="store-btn" href="#download">
-          <svg viewBox="0 0 24 24" fill="#1A1A1A"><path d="M3.18 23.76a2 2 0 0 1-.93-1.76V2a2 2 0 0 1 .93-1.76l.1-.06 11.65 11.65v.28L3.28 23.82z"/><path d="M18.53 16.3l-3.88-3.88.01-.28 3.87-3.87.09.05 4.59 2.61a2 2 0 0 1 0 3.5l-4.59 2.61z" fill="#8B1A2E"/><path d="M18.62 16.25L14.93 12.56 3.18 23.76c.47.4 1.1.43 1.74.08z" fill="#3A3A3A"/><path d="M18.62 7.75L4.92.16C4.28-.19 3.65-.16 3.18.24l11.75 11.74z" fill="#3A3A3A"/></svg>
-          <div class="store-btn-text">
-            <small>Get it on</small>
-            <strong>Google Play</strong>
+    <div class="hero-bg"></div>
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="hero-tag"><span></span> India's Banjara Matrimonial App</div>
+        <h1>Find Your <em>Perfect</em> Match</h1>
+        <p class="hero-sub">A beautiful, trusted matrimonial app built exclusively for the Banjara community across India. Verified profiles, private messaging and secure payments.</p>
+        <div class="hero-actions">
+          <!-- Google Play -->
+          <a class="btn-store android" href="#download">
+            <svg viewBox="0 0 24 24"><path d="M3.18 23.76a2 2 0 0 1-.93-1.76V2a2 2 0 0 1 .93-1.76l.1-.06 11.65 11.65v.28L3.28 23.82z" fill="#1A1A1A"/><path d="M18.53 16.3l-3.88-3.88.01-.28 3.87-3.87.09.05 4.59 2.61a2 2 0 0 1 0 3.5l-4.59 2.61z" fill="#8B1A2E"/><path d="M18.62 16.25L14.93 12.56 3.18 23.76c.47.4 1.1.43 1.74.08z" fill="#555"/><path d="M18.62 7.75L4.92.16C4.28-.19 3.65-.16 3.18.24l11.75 11.74z" fill="#555"/></svg>
+            <div class="btn-store-text"><small>Get it on</small><strong>Google Play</strong></div>
+          </a>
+          <!-- App Store -->
+          <a class="btn-store ios" href="#">
+            <svg viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.15-2.18 1.27-2.16 3.8.03 3.02 2.65 4.03 2.68 4.04l-.07.28zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <div class="btn-store-text"><small>Coming soon on</small><strong>App Store</strong></div>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="stat-num">10K+</div><div class="stat-label">Registered Profiles</div></div>
+          <div><div class="stat-num">500+</div><div class="stat-label">Successful Matches</div></div>
+          <div><div class="stat-num">100%</div><div class="stat-label">Secure & Verified</div></div>
+        </div>
+      </div>
+
+      <!-- Phones -->
+      <div class="phones-wrap">
+        <!-- Left phone: Explore screen -->
+        <div class="phone phone-left">
+          <div class="phone-notch"></div>
+          <div class="screen-explore">
+            <div class="se-top">
+              <div class="se-top-title">Explore</div>
+              <div class="se-search">Search profiles…</div>
+            </div>
+            <div class="se-grid">
+              <div class="se-card"><div class="se-card-img">👩</div><div class="se-card-body"><div class="se-card-name">Kavita</div><div class="se-card-detail">24 · Pune</div></div></div>
+              <div class="se-card"><div class="se-card-img">👩‍🦱</div><div class="se-card-body"><div class="se-card-name">Sunita</div><div class="se-card-detail">26 · Mumbai</div></div></div>
+              <div class="se-card"><div class="se-card-img">👰</div><div class="se-card-body"><div class="se-card-name">Priya</div><div class="se-card-detail">23 · Nagpur</div></div></div>
+              <div class="se-card"><div class="se-card-img">🧕</div><div class="se-card-body"><div class="se-card-name">Anita</div><div class="se-card-detail">25 · Delhi</div></div></div>
+            </div>
+            <div class="se-bottom-nav">
+              <div class="sp-nav-item"><div class="sp-nav-dot"></div></div>
+              <div class="sp-nav-item"><div class="sp-nav-dot active"></div></div>
+              <div class="sp-nav-item"><div class="sp-nav-dot"></div></div>
+              <div class="sp-nav-item"><div class="sp-nav-dot"></div></div>
+            </div>
           </div>
+        </div>
+
+        <!-- Main phone: Profile screen -->
+        <div class="phone phone-main">
+          <div class="phone-notch"></div>
+          <div class="screen-profile">
+            <div class="sp-header">
+              <div class="sp-header-title">My Profile</div>
+              <div style="width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,0.2);"></div>
+            </div>
+            <div class="sp-avatar">👰</div>
+            <div class="sp-name">Priya Rathod</div>
+            <div class="sp-meta">25 yrs · Nagpur · B.Tech</div>
+            <div class="sp-cards">
+              <div class="sp-card">
+                <div class="sp-card-label">New Matches</div>
+                <div class="sp-match-row">
+                  <div class="sp-match-ava">👩</div>
+                  <div class="sp-match-info">
+                    <div class="sp-match-name">Kavita Banjara</div>
+                    <div class="sp-match-detail">24 · Pune · MBA</div>
+                  </div>
+                  <button class="sp-match-btn">Connect</button>
+                </div>
+              </div>
+              <div class="sp-card">
+                <div class="sp-card-label">Profile Complete</div>
+                <div style="height:5px;background:var(--light-gray);border-radius:3px;overflow:hidden;">
+                  <div style="height:100%;width:78%;background:var(--maroon);border-radius:3px;"></div>
+                </div>
+                <div style="font-size:9px;color:var(--mid-gray);margin-top:5px;font-family:'Poppins',sans-serif;">78% — Add more photos to get noticed</div>
+              </div>
+            </div>
+            <div class="sp-bottom-nav">
+              <div class="sp-nav-item"><div class="sp-nav-dot active"></div></div>
+              <div class="sp-nav-item"><div class="sp-nav-dot"></div></div>
+              <div class="sp-nav-item"><div class="sp-nav-dot"></div></div>
+              <div class="sp-nav-item"><div class="sp-nav-dot"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right phone: Chat screen -->
+        <div class="phone phone-right">
+          <div class="phone-notch"></div>
+          <div style="background:var(--off-white);min-height:420px;position:relative;padding-bottom:50px;">
+            <div style="background:var(--maroon);padding:10px 14px 14px;">
+              <div style="font-size:12px;color:white;font-family:'Recoleta',serif;">Messages</div>
+            </div>
+            <div style="padding:10px;">
+              <div style="background:white;border-radius:12px;padding:10px 12px;margin-bottom:8px;display:flex;align-items:center;gap:8px;box-shadow:0 2px 8px rgba(139,26,46,0.06);">
+                <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--maroon-tint),var(--maroon));display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">👩</div>
+                <div style="flex:1;">
+                  <div style="font-size:10px;font-weight:700;color:var(--charcoal);font-family:'Recoleta',serif;">Kavita</div>
+                  <div style="font-size:8px;color:var(--mid-gray);font-family:'Poppins',sans-serif;">Hello, saw your profile…</div>
+                </div>
+                <div style="width:7px;height:7px;border-radius:50%;background:var(--maroon);flex-shrink:0;"></div>
+              </div>
+              <div style="background:white;border-radius:12px;padding:10px 12px;display:flex;align-items:center;gap:8px;box-shadow:0 2px 8px rgba(139,26,46,0.06);">
+                <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--maroon-tint),var(--maroon-mid));display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">👩‍🦱</div>
+                <div style="flex:1;">
+                  <div style="font-size:10px;font-weight:700;color:var(--charcoal);font-family:'Recoleta',serif;">Sunita</div>
+                  <div style="font-size:8px;color:var(--mid-gray);font-family:'Poppins',sans-serif;">Namaste! I am from…</div>
+                </div>
+              </div>
+            </div>
+            <div class="se-bottom-nav">
+              <div class="sp-nav-item"><div class="sp-nav-dot"></div></div>
+              <div class="sp-nav-item"><div class="sp-nav-dot"></div></div>
+              <div class="sp-nav-item"><div class="sp-nav-dot active"></div></div>
+              <div class="sp-nav-item"><div class="sp-nav-dot"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QR SECTION -->
+  <section class="qr-section" id="download">
+    <div class="qr-text">
+      <div class="section-eyebrow">Instant Download</div>
+      <h2>Scan to get the app</h2>
+      <p>Point your phone camera at the QR code to download BanjaraHub instantly. No searching, no typing — just scan and install.</p>
+      <div class="qr-stores">
+        <a class="btn-store android" href="#" style="background:rgba(242,208,213,0.08);border:1px solid rgba(242,208,213,0.15);color:var(--off-white);">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M3.18 23.76a2 2 0 0 1-.93-1.76V2a2 2 0 0 1 .93-1.76l.1-.06 11.65 11.65v.28L3.28 23.82z" fill="#FFF8F2"/><path d="M18.53 16.3l-3.88-3.88.01-.28 3.87-3.87.09.05 4.59 2.61a2 2 0 0 1 0 3.5l-4.59 2.61z" fill="#F2D0D5"/><path d="M18.62 16.25L14.93 12.56 3.18 23.76c.47.4 1.1.43 1.74.08z" fill="#aaa"/><path d="M18.62 7.75L4.92.16C4.28-.19 3.65-.16 3.18.24l11.75 11.74z" fill="#aaa"/></svg>
+          <div class="btn-store-text"><small>Get it on</small><strong>Google Play</strong></div>
         </a>
-        <!-- App Store (coming soon) -->
-        <a class="store-btn coming-soon" href="#">
-          <svg viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.15-2.18 1.27-2.16 3.8.03 3.02 2.65 4.03 2.68 4.04l-.07.28zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-          <div class="store-btn-text">
-            <small>Coming Soon on</small>
-            <strong>App Store</strong>
-          </div>
+        <a class="btn-store ios" href="#">
+          <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.15-2.18 1.27-2.16 3.8.03 3.02 2.65 4.03 2.68 4.04l-.07.28zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <div class="btn-store-text"><small>Coming soon</small><strong>App Store</strong></div>
         </a>
       </div>
     </div>
-
-    <!-- Phone mockup -->
-    <div class="phone-wrap">
-      <div class="phone">
-        <div class="phone-notch"></div>
-        <div class="phone-screen">
-          <div class="phone-avatar">👰</div>
-          <div class="phone-name">Priya Rathod</div>
-          <div class="phone-sub">25 yrs · Nagpur</div>
-          <div class="phone-card">
-            <div class="phone-card-row">
-              <div class="phone-card-avatar">👩</div>
-              <div class="phone-card-info">
-                <div class="phone-card-name">Kavita Banjara</div>
-                <div class="phone-card-detail">24 yrs · Pune · B.Tech</div>
-              </div>
-              <button class="phone-match-btn">Connect</button>
-            </div>
-            <div class="phone-card-row" style="margin-bottom:0">
-              <div class="phone-card-avatar">👩‍🦱</div>
-              <div class="phone-card-info">
-                <div class="phone-card-name">Sunita Pawar</div>
-                <div class="phone-card-detail">26 yrs · Mumbai · MBA</div>
-              </div>
-              <button class="phone-match-btn">Connect</button>
-            </div>
-          </div>
-          <div class="phone-card" style="padding: 10px 14px;">
-            <div style="font-size:11px; font-weight:700; color:#8B1A2E; margin-bottom:6px;">New Matches Today</div>
-            <div style="display:flex; gap:8px;">
-              <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#F2D0D5,#8B1A2E);display:flex;align-items:center;justify-content:center;font-size:14px;">👩</div>
-              <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#F2D0D5,#C8404F);display:flex;align-items:center;justify-content:center;font-size:14px;">👩‍🦱</div>
-              <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#F2D0D5,#B02840);display:flex;align-items:center;justify-content:center;font-size:14px;">👰</div>
-              <div style="width:36px;height:36px;border-radius:50%;background:#F2D0D5;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#8B1A2E;">+12</div>
-            </div>
-          </div>
-        </div>
-        <div class="phone-bottom-nav">
-          <div class="nav-dot active"></div>
-          <div class="nav-dot"></div>
-          <div class="nav-dot"></div>
-          <div class="nav-dot"></div>
-        </div>
-      </div>
+    <div class="qr-box">
+      <canvas id="qr-canvas"></canvas>
+      <div class="qr-box-label">Scan for Android</div>
     </div>
   </section>
 
   <!-- FEATURES -->
-  <section class="features">
-    <div class="section-label">Why BanjaraHub</div>
-    <div class="section-title">Built for your community</div>
+  <section class="features" id="features">
+    <div class="section-eyebrow">Features</div>
+    <h2 class="section-h2">Everything you need to find your match</h2>
     <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">💍</div>
+      <div class="feat-card">
+        <div class="feat-icon">💍</div>
         <h3>Verified Profiles</h3>
-        <p>Every profile is manually verified to ensure genuine and trustworthy matches.</p>
+        <p>Every profile is manually verified to ensure genuine and trustworthy connections within the Banjara community.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">🔒</div>
+      <div class="feat-card">
+        <div class="feat-icon">🔒</div>
         <h3>100% Secure</h3>
-        <p>Your data is protected. Payments powered by Razorpay — India's most trusted gateway.</p>
+        <p>Your data stays private. Payments powered by Razorpay — India's most trusted payment gateway.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">🤝</div>
+      <div class="feat-card">
+        <div class="feat-icon">💬</div>
+        <h3>Private Messaging</h3>
+        <p>Chat directly with your matches safely and privately within the app.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🤝</div>
         <h3>Community First</h3>
-        <p>Built exclusively for the Banjara community across all of India.</p>
+        <p>Built exclusively for the Banjara community — every feature designed around your traditions and values.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">💬</div>
-        <h3>Direct Messaging</h3>
-        <p>Connect and chat directly with matches within the app, safely and privately.</p>
+      <div class="feat-card">
+        <div class="feat-icon">📸</div>
+        <h3>Rich Profiles</h3>
+        <p>Showcase up to 6 photos, share your biodata and let your personality shine through.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">⭐</div>
+        <h3>Smart Matching</h3>
+        <p>Get matched based on gotra, location, education and family preferences.</p>
       </div>
     </div>
   </section>
 
-  <!-- DOWNLOAD -->
-  <section class="download-section" id="download">
-    <div class="section-label" style="color:#F2D0D5;">Download Now</div>
-    <h2>Get BanjaraHub Today</h2>
-    <p>Available on Android. iOS coming soon.</p>
-    <div class="download-buttons">
-      <a class="dl-btn" href="#">
-        <svg viewBox="0 0 24 24" fill="#1A1A1A" width="28" height="28"><path d="M3.18 23.76a2 2 0 0 1-.93-1.76V2a2 2 0 0 1 .93-1.76l.1-.06 11.65 11.65v.28L3.28 23.82z"/><path d="M18.53 16.3l-3.88-3.88.01-.28 3.87-3.87.09.05 4.59 2.61a2 2 0 0 1 0 3.5l-4.59 2.61z" fill="#8B1A2E"/><path d="M18.62 16.25L14.93 12.56 3.18 23.76c.47.4 1.1.43 1.74.08z" fill="#555"/><path d="M18.62 7.75L4.92.16C4.28-.19 3.65-.16 3.18.24l11.75 11.74z" fill="#555"/></svg>
-        <div class="dl-btn-text">
-          <small>Get it on</small>
-          <strong>Google Play</strong>
-        </div>
+  <!-- DOWNLOAD BANNER -->
+  <div class="download-banner">
+    <div class="dl-banner-text">
+      <h2>Ready to find your match?</h2>
+      <p>Download BanjaraHub free on Android today.</p>
+    </div>
+    <div class="dl-banner-btns">
+      <a class="dl-btn primary" href="#">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M3.18 23.76a2 2 0 0 1-.93-1.76V2a2 2 0 0 1 .93-1.76l.1-.06 11.65 11.65v.28L3.28 23.82z" fill="#1A1A1A"/><path d="M18.53 16.3l-3.88-3.88.01-.28 3.87-3.87.09.05 4.59 2.61a2 2 0 0 1 0 3.5l-4.59 2.61z" fill="#8B1A2E"/><path d="M18.62 16.25L14.93 12.56 3.18 23.76c.47.4 1.1.43 1.74.08z" fill="#555"/><path d="M18.62 7.75L4.92.16C4.28-.19 3.65-.16 3.18.24l11.75 11.74z" fill="#555"/></svg>
+        <div class="dl-btn-text"><small>Get it on</small><strong>Google Play</strong></div>
       </a>
-      <a class="dl-btn soon" href="#">
-        <svg viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.15-2.18 1.27-2.16 3.8.03 3.02 2.65 4.03 2.68 4.04l-.07.28zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        <div class="dl-btn-text">
-          <small>Coming Soon on</small>
-          <strong>App Store</strong>
-        </div>
+      <a class="dl-btn secondary" href="#">
+        <svg viewBox="0 0 24 24" fill="white" width="22" height="22"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.15-2.18 1.27-2.16 3.8.03 3.02 2.65 4.03 2.68 4.04l-.07.28zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <div class="dl-btn-text"><small>Coming soon</small><strong>App Store</strong></div>
       </a>
     </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about">
-    <img class="about-logo" src="logo.png" alt="BanjaraHub" />
-    <div class="about-text">
-      <h2>About BanjaraHub</h2>
-      <p>BanjaraHub is a matrimonial platform built exclusively for the Banjara community across India. We connect families with meaningful, verified matches while ensuring complete privacy, security, and cultural sensitivity. Our mission is to preserve and celebrate Banjara traditions while helping you find your life partner.</p>
-    </div>
-  </section>
+  </div>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-brand">
       <img src="logo.png" alt="BanjaraHub" />
-      <span>BanjaraHub</span>
+      <span class="footer-brand-name">BanjaraHub</span>
     </div>
-    <p>© 2024 BanjaraHub (OPC) Private Limited</p>
+    <p class="footer-copy">© 2024 BanjaraHub (OPC) Private Limited</p>
     <div class="footer-links">
       <a href="mailto:rathodswapnil9@gmail.com">Contact</a>
       <a href="/privacy.html">Privacy Policy</a>
     </div>
   </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    new QRCode(document.getElementById('qr-canvas'), {
+      text: 'https://banjarahub.com',
+      width: 160,
+      height: 160,
+      colorDark: '#8B1A2E',
+      colorLight: '#ffffff',
+      correctLevel: QRCode.CorrectLevel.H
+    });
+  </script>
 
 </body>
 </html>
