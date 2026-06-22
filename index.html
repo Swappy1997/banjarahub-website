@@ -607,24 +607,126 @@
     .footer-brand img { width: 30px; height: 30px; border-radius: 8px; }
     .footer-brand-name { font-family: 'Recoleta', serif; font-size: 17px; color: var(--off-white); }
     .footer-copy { font-size: 12px; color: var(--mid-gray); }
-    .footer-links { display: flex; gap: 20px; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
     .footer-links a { font-size: 13px; color: var(--mid-gray); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--maroon-tint); }
 
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--off-white);
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      top: 61px; left: 0; right: 0;
+      background: rgba(10,2,5,0.97);
+      backdrop-filter: blur(20px);
+      padding: 20px 24px 28px;
+      flex-direction: column;
+      gap: 6px;
+      z-index: 998;
+      border-bottom: 1px solid rgba(242,208,213,0.08);
+    }
+    .nav-drawer.open { display: flex; }
+    .nav-drawer a {
+      color: var(--off-white);
+      text-decoration: none;
+      font-size: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(242,208,213,0.06);
+    }
+    .nav-drawer .nav-cta {
+      margin-top: 8px;
+      text-align: center;
+      padding: 14px;
+      font-size: 15px;
+    }
+
+    /* ── TABLET (1024px) ── */
+    @media (max-width: 1024px) {
+      .hero { padding: 100px 32px 60px; }
+      .hero-grid { gap: 40px; }
+      .hero h1 { font-size: 52px; }
+      .phones-wrap { height: 500px; }
+      .phone-main { width: 200px; }
+      .phone-left { width: 170px; left: -20px; }
+      .phone-right { width: 170px; right: -20px; }
+      .features { padding: 80px 32px; }
+      .download-banner { margin: 0 32px 80px; padding: 48px 40px; }
+      .qr-section { padding: 60px 32px; gap: 32px; }
+    }
+
+    /* ── MOBILE (768px) ── */
     @media (max-width: 768px) {
       nav { padding: 14px 20px; }
-      .hero { padding: 100px 20px 60px; }
-      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-      .hero h1 { font-size: 42px; }
-      .phones-wrap { height: 380px; }
+      .nav-right .nav-link { display: none; }
+      .nav-right .nav-cta { display: none; }
+      .hamburger { display: flex; }
+
+      .hero { padding: 90px 20px 60px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+      .hero h1 { font-size: 44px; }
+      .hero-sub { font-size: 15px; }
+      .hero-stats { gap: 20px; }
+      .stat-num { font-size: 22px; }
+
+      .phones-wrap { height: 400px; }
       .phone-left, .phone-right { display: none; }
-      .phone-main { width: 200px; }
-      .qr-section { padding: 60px 20px; }
+      .phone-main { width: 210px; }
+
+      .qr-section { padding: 56px 20px; flex-direction: column; align-items: flex-start; gap: 32px; }
+      .qr-text h2 { font-size: 32px; }
+
       .features { padding: 60px 20px; }
       .section-h2 { font-size: 32px; }
-      .download-banner { margin: 0 20px 60px; padding: 40px 28px; }
+
+      .download-banner {
+        margin: 0 20px 60px;
+        padding: 36px 24px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
       .dl-banner-text h2 { font-size: 28px; }
-      footer { padding: 32px 20px; flex-direction: column; align-items: flex-start; }
+      .dl-banner-btns { width: 100%; }
+      .dl-btn { flex: 1; justify-content: center; min-width: 0; }
+
+      footer {
+        padding: 32px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+    }
+
+    /* ── SMALL MOBILE (480px) ── */
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 36px; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .btn-store { justify-content: center; }
+      .hero-stats { flex-wrap: wrap; gap: 16px; }
+      .qr-stores { flex-direction: column; }
+      .dl-banner-btns { flex-direction: column; }
+      .dl-btn { min-width: unset; }
+      .features-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -640,8 +742,16 @@
       <a class="nav-link" href="#features">Features</a>
       <a class="nav-link" href="#download">Download</a>
       <a class="nav-cta" href="#download">Get the App</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="#features" onclick="closeDrawer()">Features</a>
+    <a href="#download" onclick="closeDrawer()">Download</a>
+    <a class="nav-cta" href="#download" onclick="closeDrawer()">Get the App</a>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
@@ -895,6 +1005,17 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script>
+    const hamburger = document.getElementById('hamburger');
+    const drawer = document.getElementById('nav-drawer');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      drawer.classList.toggle('open');
+    });
+    function closeDrawer() {
+      hamburger.classList.remove('open');
+      drawer.classList.remove('open');
+    }
+
     new QRCode(document.getElementById('qr-canvas'), {
       text: 'https://banjarahub.com',
       width: 160,
