@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BanjaraHub – Banjara Matrimonial App</title>
+  <title>BanjaraHub – Matrimony, Banjara Bazar &amp; Community</title>
   <link rel="icon" type="image/png" href="logo.png" />
   <link rel="apple-touch-icon" href="logo.png" />
   <style>
@@ -431,6 +431,124 @@
       border-top: 1px solid var(--maroon-tint);
     }
 
+    /* ── PILLARS ── */
+    .pillars-section {
+      padding: 80px 48px;
+      background: rgba(139,26,46,0.03);
+      border-bottom: 1px solid rgba(242,208,213,0.08);
+    }
+    .pillars-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .pillars-eyebrow {
+      font-size: 12px;
+      color: var(--maroon-light);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+    .pillars-heading {
+      font-size: 40px;
+      color: var(--off-white);
+      text-align: center;
+      margin-bottom: 56px;
+      line-height: 1.15;
+    }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .pillar-card {
+      background: rgba(242,208,213,0.04);
+      border: 1px solid rgba(242,208,213,0.1);
+      border-radius: 24px;
+      padding: 36px 28px;
+      transition: transform 0.25s, border-color 0.25s, background 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .pillar-card::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      opacity: 0.06;
+      background: var(--maroon-light);
+    }
+    .pillar-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(139,26,46,0.5);
+      background: rgba(139,26,46,0.08);
+    }
+    .pillar-emoji {
+      font-size: 40px;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .pillar-label {
+      display: inline-block;
+      background: rgba(139,26,46,0.3);
+      border: 1px solid rgba(139,26,46,0.5);
+      color: var(--maroon-tint);
+      font-size: 10px;
+      padding: 3px 10px;
+      border-radius: 100px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .pillar-title {
+      font-family: 'Recoleta', Georgia, serif;
+      font-size: 26px;
+      color: var(--off-white);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .pillar-desc {
+      font-size: 14px;
+      color: var(--mid-gray);
+      line-height: 1.75;
+    }
+    .pillar-features {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .pillar-feat {
+      font-size: 13px;
+      color: var(--maroon-tint);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .pillar-feat::before {
+      content: '✓';
+      width: 18px; height: 18px;
+      background: rgba(139,26,46,0.3);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 1024px) {
+      .pillars-section { padding: 60px 32px; }
+    }
+    @media (max-width: 768px) {
+      .pillars-grid { grid-template-columns: 1fr; }
+      .pillars-section { padding: 56px 20px; }
+      .pillars-heading { font-size: 30px; margin-bottom: 36px; }
+    }
+
     /* ── QR SECTION ── */
     .qr-section {
       display: flex;
@@ -758,9 +876,9 @@
     <div class="hero-bg"></div>
     <div class="hero-grid">
       <div class="hero-left">
-        <div class="hero-tag"><span></span> India's Banjara Matrimonial App</div>
-        <h1>Find Your <em>Perfect</em> Match</h1>
-        <p class="hero-sub">A beautiful, trusted matrimonial app built exclusively for the Banjara community across India. Available on Android &amp; iOS. Verified profiles, private messaging and secure payments.</p>
+        <div class="hero-tag"><span></span> 💍 Matrimony &nbsp;·&nbsp; 🛍️ Banjara Bazar &nbsp;·&nbsp; 🤝 Community</div>
+        <h1>One App for the <em>Banjara Community</em></h1>
+        <p class="hero-sub">Find your life partner, shop at Banjara Bazar, and stay connected with your community — all in one beautifully designed app, built exclusively for Banjara people across India.</p>
         <div class="hero-actions">
           <!-- Google Play -->
           <a class="btn-store android" href="#download">
@@ -774,9 +892,9 @@
           </a>
         </div>
         <div class="hero-stats">
-          <div><div class="stat-num">10K+</div><div class="stat-label">Registered Profiles</div></div>
+          <div><div class="stat-num">10K+</div><div class="stat-label">Community Members</div></div>
           <div><div class="stat-num">500+</div><div class="stat-label">Successful Matches</div></div>
-          <div><div class="stat-num">100%</div><div class="stat-label">Secure & Verified</div></div>
+          <div><div class="stat-num">3-in-1</div><div class="stat-label">Matrimony · Bazar · Community</div></div>
         </div>
       </div>
 
@@ -911,6 +1029,53 @@
     </div>
   </section>
 
+  <!-- PILLARS -->
+  <section class="pillars-section">
+    <div class="pillars-inner">
+      <div class="pillars-eyebrow">What is BanjaraHub?</div>
+      <h2 class="pillars-heading">Three worlds, one app</h2>
+      <div class="pillars-grid">
+
+        <div class="pillar-card">
+          <span class="pillar-emoji">💍</span>
+          <span class="pillar-label">Matrimony</span>
+          <span class="pillar-title">Find Your Match</span>
+          <p class="pillar-desc">India's first dedicated matrimonial platform built exclusively for the Banjara community. Verified profiles, smart matching, and private messaging.</p>
+          <div class="pillar-features">
+            <div class="pillar-feat">Verified Banjara profiles</div>
+            <div class="pillar-feat">Smart matching by gotra & location</div>
+            <div class="pillar-feat">Safe private messaging</div>
+          </div>
+        </div>
+
+        <div class="pillar-card">
+          <span class="pillar-emoji">🛍️</span>
+          <span class="pillar-label">Banjara Bazar</span>
+          <span class="pillar-title">Shop & Sell</span>
+          <p class="pillar-desc">A dedicated marketplace for the Banjara community. Buy and sell traditional clothing, jewellery, home items, and more — all within your trusted community.</p>
+          <div class="pillar-features">
+            <div class="pillar-feat">Traditional & modern products</div>
+            <div class="pillar-feat">Sell within your community</div>
+            <div class="pillar-feat">Secure Razorpay payments</div>
+          </div>
+        </div>
+
+        <div class="pillar-card">
+          <span class="pillar-emoji">🤝</span>
+          <span class="pillar-label">Community Connect</span>
+          <span class="pillar-title">Stay Connected</span>
+          <p class="pillar-desc">Stay in touch with your Banjara network. Discover events, share updates, and build meaningful connections beyond matrimony.</p>
+          <div class="pillar-features">
+            <div class="pillar-feat">Community events & news</div>
+            <div class="pillar-feat">Connect with Banjara people</div>
+            <div class="pillar-feat">Share your story & culture</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- QR SECTION -->
   <section class="qr-section" id="download">
     <div class="qr-text">
@@ -943,27 +1108,12 @@
   <!-- FEATURES -->
   <section class="features" id="features">
     <div class="section-eyebrow">Features</div>
-    <h2 class="section-h2">Everything you need to find your match</h2>
+    <h2 class="section-h2">Everything your community needs</h2>
     <div class="features-grid">
       <div class="feat-card">
         <div class="feat-icon">💍</div>
-        <h3>Verified Profiles</h3>
-        <p>Every profile is manually verified to ensure genuine and trustworthy connections within the Banjara community.</p>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon">🔒</div>
-        <h3>100% Secure</h3>
-        <p>Your data stays private. Payments powered by Razorpay — India's most trusted payment gateway.</p>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon">💬</div>
-        <h3>Private Messaging</h3>
-        <p>Chat directly with your matches safely and privately within the app.</p>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon">🤝</div>
-        <h3>Community First</h3>
-        <p>Built exclusively for the Banjara community — every feature designed around your traditions and values.</p>
+        <h3>Smart Matching</h3>
+        <p>Get matched based on gotra, location, education and family preferences — exclusively within the Banjara community.</p>
       </div>
       <div class="feat-card">
         <div class="feat-icon">📸</div>
@@ -971,9 +1121,24 @@
         <p>Showcase up to 6 photos, share your biodata and let your personality shine through.</p>
       </div>
       <div class="feat-card">
-        <div class="feat-icon">⭐</div>
-        <h3>Smart Matching</h3>
-        <p>Get matched based on gotra, location, education and family preferences.</p>
+        <div class="feat-icon">🛍️</div>
+        <h3>Banjara Bazar</h3>
+        <p>Buy and sell traditional clothing, jewellery and more within your trusted Banjara marketplace.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📢</div>
+        <h3>Community Connect</h3>
+        <p>Discover events, share updates, and stay in touch with your Banjara network beyond matrimony.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">💬</div>
+        <h3>Private Messaging</h3>
+        <p>Chat safely and privately with matches, sellers, and community members all in one inbox.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔒</div>
+        <h3>100% Secure</h3>
+        <p>Your data stays private. Payments powered by Razorpay — India's most trusted payment gateway.</p>
       </div>
     </div>
   </section>
@@ -981,8 +1146,8 @@
   <!-- DOWNLOAD BANNER -->
   <div class="download-banner">
     <div class="dl-banner-text">
-      <h2>Ready to find your match?</h2>
-      <p>Download BanjaraHub free on Android &amp; iOS today.</p>
+      <h2>Your Banjara Hub awaits</h2>
+      <p>Matrimony · Banjara Bazar · Community — download free on Android &amp; iOS.</p>
     </div>
     <div class="dl-banner-btns">
       <a class="dl-btn primary" href="#">
