@@ -1,0 +1,89 @@
+@font-face{font-family:'Recoleta';src:url('recoleta_bold.ttf') format('truetype');font-weight:700;}
+@font-face{font-family:'Poppins';src:url('poppins_medium.ttf') format('truetype');font-weight:500;}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --maroon:#8B1A2E; --maroon-mid:#B02840; --maroon-deep:#5E0F1F; --maroon-tint:#F2D0D5;
+  --cream:#FFF8F2; --cream-2:#F5EDE8; --ink:#1A1A1A; --near:#0A0205;
+  --indigo:#1F3A5C; --marigold:#D9941F; --leaf:#2C6E5A;
+}
+body{margin:0;background:#fff}
+.post{position:relative;overflow:hidden;font-family:'Poppins',sans-serif;font-weight:500;
+      display:flex;flex-direction:column;}
+.feed{width:1080px;height:1350px}
+.story{width:1080px;height:1920px}
+
+/* grounds */
+.g-maroon{background:linear-gradient(155deg,#7A1628 0%,#8B1A2E 45%,#5E0F1F 100%);color:var(--cream)}
+.g-cream{background:var(--cream);color:var(--ink)}
+.g-dark{background:linear-gradient(160deg,#170208 0%,#0A0205 60%,#25070F 100%);color:var(--cream)}
+.g-indigo{background:linear-gradient(155deg,#284A73 0%,#1F3A5C 50%,#122840 100%);color:var(--cream)}
+
+/* abhla (mirror) field — the Lambani motif, as a dot field */
+.g-maroon::before,.g-dark::before,.g-indigo::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 18px 18px, rgba(255,248,242,.10) 2.6px, transparent 2.9px) 0 0/52px 52px;
+}
+.g-cream::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 18px 18px, rgba(139,26,46,.09) 2.6px, transparent 2.9px) 0 0/52px 52px;
+}
+
+/* stitched diamond band — signature edge */
+.band{position:absolute;left:0;right:0;height:34px;display:flex;align-items:center;gap:22px;padding:0 72px;overflow:hidden}
+.band.top{top:64px}.band.bottom{bottom:196px}
+.band i{width:14px;height:14px;rotate:45deg;flex:0 0 14px;border-radius:1px}
+
+.inner{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;padding:170px 84px 30px}
+.story .inner{padding:250px 84px 40px}
+
+.eyebrow{font-size:26px;letter-spacing:.26em;text-transform:uppercase;display:flex;align-items:center;gap:18px}
+.eyebrow i{width:15px;height:15px;rotate:45deg;flex:0 0 15px}
+
+h1{font-family:'Recoleta',serif;font-weight:700;font-size:104px;line-height:1.04;letter-spacing:-.02em;margin-top:34px}
+h1.sm{font-size:82px}
+h1.xl{font-size:132px}
+.hi{font-size:40px;line-height:1.5;margin-top:26px;opacity:.9}
+.body{font-size:36px;line-height:1.55;margin-top:32px;max-width:860px;opacity:.92}
+
+.rule{height:0;border-top:3px dashed currentColor;opacity:.35;margin:44px 0}
+
+.rows{display:flex;flex-direction:column;gap:0;margin-top:48px}
+.row{display:flex;gap:28px;align-items:flex-start;padding:30px 0;border-bottom:2px dashed currentColor}
+.row:last-child{border-bottom:0}
+.row .ic{font-size:52px;line-height:1;flex:0 0 62px}
+.row b{font-family:'Recoleta',serif;font-size:46px;display:block;line-height:1.15}
+.row span{font-size:30px;line-height:1.45;display:block;margin-top:8px;opacity:.8}
+
+.nums{display:flex;flex-direction:column;gap:0;margin-top:44px}
+.num{display:flex;gap:30px;align-items:baseline;padding:26px 0;border-bottom:2px dashed currentColor}
+.num:last-child{border-bottom:0}
+.num em{font-family:'Recoleta',serif;font-style:normal;font-size:44px;flex:0 0 62px;opacity:.55}
+.num p{font-size:38px;line-height:1.35}
+
+.big{font-family:'Recoleta',serif;font-size:290px;line-height:.9;letter-spacing:-.04em}
+.big.sm{font-size:210px}
+
+.word{font-family:'Recoleta',serif;font-size:150px;line-height:1.05;letter-spacing:-.02em}
+.wmean{font-size:48px;margin-top:20px;opacity:.92}
+.whin{font-size:42px;margin-top:10px;opacity:.75}
+
+.chipline{display:flex;gap:18px;flex-wrap:wrap;margin-top:44px}
+.chip{font-size:28px;padding:14px 26px;border:3px solid currentColor;border-radius:999px;opacity:.85}
+
+/* footer lockup */
+.foot{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;
+      padding:0 84px 76px;margin-top:auto}
+.foot .who{display:flex;align-items:center;gap:22px}
+.foot img{width:84px;height:84px;object-fit:contain;border-radius:18px;background:rgba(255,255,255,.9);padding:8px}
+.foot .t b{font-family:'Recoleta',serif;font-size:36px;display:block;line-height:1.1}
+.foot .t span{font-size:26px;opacity:.72;letter-spacing:.05em}
+.foot .cta{font-size:28px;letter-spacing:.14em;text-transform:uppercase;padding:18px 32px;border-radius:999px}
+.cta-light{background:var(--cream);color:var(--maroon)}
+.cta-dark{background:var(--maroon);color:var(--cream)}
+.cta-gold{background:var(--marigold);color:#2A1806}
+
+.swipe{position:absolute;right:84px;bottom:250px;z-index:3;font-size:28px;letter-spacing:.14em;text-transform:uppercase;opacity:.8}
+
+.nums.tight{margin-top:18px}
+.nums.tight .num{padding:20px 0}
+.nums.tight .num p{font-size:35px}
