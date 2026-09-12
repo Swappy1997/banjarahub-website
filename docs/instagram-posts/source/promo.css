@@ -1,0 +1,50 @@
+/* sizes */
+.sq{width:1080px;height:1080px}
+.poster{width:1240px;height:1754px}   /* A4, rendered at 2x = 300dpi */
+.fbcover{width:1640px;height:856px}
+.link{width:1200px;height:630px}
+.feature{width:1024px;height:500px}
+
+/* poster */
+.poster .inner{padding:150px 100px 20px;justify-content:flex-start}
+.poster .brandline{display:flex;align-items:center;gap:26px;margin-bottom:44px}
+.poster .brandline img{width:112px;height:112px;object-fit:contain;background:rgba(255,255,255,.92);border-radius:24px;padding:10px}
+.poster .brandline b{font-family:'Recoleta',serif;font-size:72px;line-height:1;letter-spacing:-.02em}
+.poster .brandline span{display:block;font-size:24px;letter-spacing:.16em;text-transform:uppercase;opacity:.75;margin-top:8px}
+.poster h1{font-size:96px;line-height:1.05;margin-top:0}
+.poster .hi{font-size:40px;margin-top:22px}
+.poster .prows{display:flex;flex-direction:column;gap:0;margin-top:46px}
+.poster .prow{display:flex;gap:26px;align-items:center;padding:26px 0;border-bottom:2px dashed currentColor}
+.poster .prow:last-child{border-bottom:0}
+.poster .prow .ic{font-size:54px;flex:0 0 64px}
+.poster .prow b{font-family:'Recoleta',serif;font-size:44px;display:block}
+.poster .prow span{font-size:27px;opacity:.8;display:block;margin-top:4px}
+.qrblock{display:flex;align-items:center;gap:40px;background:#FFF8F2;border-radius:20px;padding:34px 40px;margin-top:auto;margin-bottom:44px}
+.qrblock img{width:250px;height:250px;flex:0 0 250px}
+.qrblock .qt b{font-family:'Recoleta',serif;font-size:52px;color:#8B1A2E;display:block;line-height:1.1}
+.qrblock .qt span{font-size:30px;color:#1A1A1A;display:block;margin-top:12px;line-height:1.4}
+.qrblock .qt em{font-style:normal;font-size:26px;color:#8B1A2E;display:block;margin-top:14px;letter-spacing:.08em;text-transform:uppercase}
+.poster .pfoot{position:relative;z-index:2;padding:0 100px 60px;display:flex;justify-content:space-between;align-items:center;font-size:26px;opacity:.8}
+
+/* square */
+.sq .inner{padding:150px 84px 20px}
+.sq h1{font-size:88px}
+.sq .body{font-size:33px}
+
+/* landscape family */
+.land{flex-direction:row!important;align-items:center}
+.land .lt{position:relative;z-index:2;flex:1;padding:0 0 0 64px}
+.land .lr{position:relative;z-index:2;display:flex;align-items:center;gap:28px;padding:0 64px 0 40px}
+.land .eyebrow{font-size:19px;letter-spacing:.22em}
+.land .eyebrow i{width:11px;height:11px;flex:0 0 11px}
+.land h1{font-family:'Recoleta',serif;font-size:62px;line-height:1.06;margin-top:18px}
+.land .body{font-size:25px;margin-top:16px;max-width:640px}
+.land .qrsm{width:190px;height:190px;background:#FFF8F2;border-radius:16px;padding:12px}
+.land .lockup{display:flex;flex-direction:column;align-items:center;gap:12px}
+.land .lockup img{width:110px;height:110px;object-fit:contain;background:rgba(255,255,255,.92);border-radius:22px;padding:10px}
+.land .lockup b{font-family:'Recoleta',serif;font-size:34px}
+.feature .lt{padding-left:52px}.feature h1{font-size:50px}.feature .body{font-size:21px;max-width:520px}
+.feature .lockup img{width:88px;height:88px}.feature .lockup b{font-size:27px}
+.link h1{font-size:54px}.link .body{font-size:23px}
+
+.fbcover .lt{padding-left:140px}
