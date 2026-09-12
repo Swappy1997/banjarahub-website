@@ -50,3 +50,21 @@ the extraction so the posts follow.
 A4 posters at 300dpi, WhatsApp status frames, square ads, Facebook cover, link-share
 image and the Play Store feature graphic. `qr.png` is a high-error-correction QR for
 https://banjarahub.com, the same URL the website's own QR codes encode.
+
+## R-series — posts built on the real app (use these)
+
+`realposts.js` / `real.css` render `R1`–`R6`, matching the product as it actually
+ships: the `banjaraHub` wordmark, the credits model, Browse by Profession / State,
+and the bottom nav (Home · Matches · Messages · Profile). The pastel feature-card
+system, the corner badge and the Play Store badge follow the brand's existing
+creative. `caravan.png` is the Jai Sevalal footer band taken from that creative.
+
+The real app's feature set, as shown on the home screen:
+Government ID verified profiles · screenshot blocked · personal info protected ·
+women register free · no subscription, credits that don't expire · more filters ·
+Marathi, Kannada and Telugu · Google Play.
+
+Posts 11–15 were built from the phone mockups in `index.html`, which do NOT match
+the shipped app (they show a Bazar tab and a 3-in-1 layout the app's nav does not
+have). Treat 11–15 as unusable until the website mockups are reconciled with the
+product.
